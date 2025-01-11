@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Inicio de Sesión</h2>
+  <form [formGroup]="validateForm">
+    <div class="form-group">
+      <label for="username">Usuario</label>
+      <input type="text" id="username"  formControlName="usuario" placeholder="Ingresar Usuario" required>
+    </div>
+    <div class="form-group">
+      <label for="contrasena">Contraseña</label>
+      <input type="password" id="contrasena"  formControlName="contrasena" placeholder="Ingresar Contraseña" required>
+    </div>
+    <div class="form-group">
+      <button (click)="enviar()">Iniciar Sesión</button>
+    </div>
+  </form>
+
+  <div class="option" *ngIf="ver">
+    <p><a routerLink="/usuario/crear">Crea una cuenta</a></p>
+  </div>
+
+</div>

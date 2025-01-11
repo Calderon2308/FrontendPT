@@ -1,0 +1,53 @@
+<!-- news-form.component.html -->
+<div class="container mt-5">
+    <h2>Crear Noticia</h2>
+    <form [formGroup]="newsForm">
+      <!-- Campo Título -->
+      <div class="form-group mb-3">
+        <label for="titulo">Título</label>
+        <input
+          type="text"
+          id="titulo"
+          class="form-control"
+          formControlName="titulo"
+          placeholder="Escribe el título de la noticia"
+          required
+        />
+      </div>
+  
+      <!-- Campo Descripción -->
+      <div class="form-group mb-3">
+        <label for="descripcion">Descripción</label>
+        <textarea
+          id="descripcion"
+          class="form-control"
+          formControlName="descripcion"
+          rows="4"
+          placeholder="Escribe la descripción de la noticia"
+          required
+        ></textarea>
+      </div>
+  
+      <!-- Campo Imagen -->
+      <div class="form-group mb-3">
+        <label for="imagen">Imagen</label>
+        <input
+          type="file"
+          id="imagen"
+          class="form-control"
+          (change)="onImageChange($event)"
+          accept="image/*"
+        />
+        <div *ngIf="imagePreview" class="mt-3">
+          <label>Vista previa:</label>
+          <img [src]="imagePreview" alt="Vista previa de la imagen" class="img-thumbnail" style="max-width: 200px;" />
+        </div>
+      </div>
+  
+      <!-- Botón Enviar -->
+      <button type="submit" class="btn btn-primary" >
+        Crear Noticia
+      </button>
+    </form>
+  </div>
+  
