@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Noticia } from '../../Model/Noticia-Model';
+import { ServiceService } from '../../Service/service.service';
 
 @Component({
   selector: 'app-master',
@@ -13,11 +15,12 @@ export class MasterComponent {
   imagePreview: string | ArrayBuffer | null = null;
 
   constructor(
-
+    private serviceService: ServiceService,
   ) {
     this.newsForm = new FormGroup({
       titulo: new FormControl('', Validators.required),
-      descripcion: new FormControl('', Validators.required)
+      descripcion: new FormControl('', Validators.required),
+      contenido: new FormControl('', Validators.required)
     })
   }
 
@@ -34,14 +37,21 @@ export class MasterComponent {
     }
   }
 
-  save(){
-    if(this.newsForm.valid){
-      const formData = new FormData();
-      formData.append('data', this.newsForm.value);
-      if (this.newsForm.get('imagen')?.value) {
-        formData.append('imagen', this.newsForm.get('imagen')?.value);
-      }
-      console.log('Formulario enviado', formData);
+  save() {
+    if (this.newsForm.valid) {
+
+
+      var data: Noticia = this.newsForm.value
+
+      data.fecha_creacion = new Date()
+      data.contenido = this.newsForm.get('contenido')?.value
+      console.log(data)
+      this.serviceService.CrearNoticia(data).subscribe(res => {
+        console.log(res)
+      })
+
+
+
     }
   }
 

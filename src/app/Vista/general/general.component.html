@@ -1,1 +1,26 @@
-<p>general works!</p>
+<div class="container">
+  <div class="container">
+    <table class="news-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Ver</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nt of noticia">
+          <td>{{nt.titulo}}</td>
+          <td><button class="btn-view" (click)="showNewsDetails(nt)">Ver Noticia</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br><br>
+  <div class="news-details" *ngIf="show">
+    <h3>{{NoticiaSelect.titulo}}</h3>
+    <p>{{NoticiaSelect.descripcion}}</p>
+    <div class="image-container">
+      <img src="{{NoticiaSelect.contenido}}" alt="Imagen de ejemplo" class="bottom-image">
+    </div>
+  </div>
+</div>

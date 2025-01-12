@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../Model/Usuario-model';
 import { HttpClient } from '@angular/common/http';
+import { Noticia } from '../Model/Noticia-Model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,12 @@ export class ServiceService {
     return this.http.put<string>(`${this.URL}/project/validar`, user)
   }
 
-  CrearNoticia(data: FormData): Observable<FormData> {
-    return this.http.post<FormData>(`${this.URL}/project/noticia/crear`, data)
+  CrearNoticia(data: Noticia): Observable<Noticia> {
+    return this.http.post<Noticia>(`${this.URL}/project/noticia/crear`, data)
+  }
+
+  verNoticias(): Observable<Noticia[]>{
+    return this.http.get<Noticia[]>(`${this.URL}/project/ver/noticias`)
   }
 
 }

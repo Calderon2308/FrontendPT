@@ -1,5 +1,6 @@
-export class Usuario {
+export class Noticia {
     titulo!: string;
     descripcion!: string;
-    fecha!: Date;
+    fecha_creacion!: Date;
+    contenido!: File
 }

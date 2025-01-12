@@ -9,14 +9,21 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'frontend';
+  show = true
 
   constructor(
     private router: Router
-  ){
+  ) {
 
   }
 
-  login(){
+  ngOnInit() {
+    //this.show = true
+  }
+
+  async login() {
+    this.show = false
     this.router.navigate(['login'])
+
   }
 }
